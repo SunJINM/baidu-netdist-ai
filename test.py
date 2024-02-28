@@ -13,10 +13,10 @@ from models.sa_aidr import STRAIDR
 parser = argparse.ArgumentParser()
 parser.add_argument('--numOfWorkers', type=int, default=0,
                     help='workers for dataloader')
-parser.add_argument('--modelsSavePath', type=str, default='',
+parser.add_argument('--modelsSavePath', type=str, default='./',
                     help='path for saving models')
 parser.add_argument('--logPath', type=str,
-                    default='')
+                    default='./logs/')
 parser.add_argument('--batchSize', type=int, default=16)
 parser.add_argument('--loadSize', type=int, default=512,
                     help='image loading size')
@@ -66,7 +66,7 @@ Erase_data = DataLoader(Erase_data, batch_size=batchSize, shuffle=False, num_wor
 # netG = STRAIDR(num_c=96)
 if args.net == 'str':
     netG = STRnet2(3)
-    weights = paddle.load('STE_best_38.6789.pdparams')
+    weights = paddle.load('STE_str_best.pdparams')
     netG.load_dict(weights)
     print('load:', 'STE_best_38.6789.pdparams')
     netG.eval()

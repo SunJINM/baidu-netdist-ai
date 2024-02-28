@@ -76,8 +76,8 @@ class ErasingData(paddle.io.Dataset):
     def __getitem__(self, index):
         img = Image.open(self.imageFiles[index])
         # print(self.imageFiles[index].replace('images', self.mask_dir).replace('jpg','png'))
-        mask = Image.open(self.imageFiles[index].replace('images', self.mask_dir).replace('jpg','png'))
-        gt = Image.open(self.imageFiles[index].replace('images','gts').replace('jpg','png'))
+        mask = Image.open(self.imageFiles[index].replace('images', self.mask_dir).replace('png','jpg'))
+        gt = Image.open(self.imageFiles[index].replace('png','jpg'))
         # import pdb;pdb.set_trace()
         if self.training:
         # ### for data augmentation
